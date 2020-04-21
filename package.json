@@ -5,11 +5,14 @@
    "main": "dist/index.js",
    "scripts": {
       "dev": "set NODE_ENV=dev&&nodemon src/index.ts",
-      "create_migration_dev": "ts-node ./node_modules/typeorm/cli.js migration:generate -n seed",
-      "migration_dev": "ts-node ./node_modules/typeorm/cli.js migration:run",
-      "migration_prod": "typeorm migration:run",
+      "create_migration_dev": "set NODE_ENV=dev&&ts-node ./node_modules/typeorm/cli.js migration:generate -n seed",
+      "migration_dev": "set NODE_ENV=dev&&ts-node ./node_modules/typeorm/cli.js migration:run",
+      "migration_test": "set NODE_ENV=test&&typeorm migration:run",
+      "migration_prod": "set NODE_ENV=prod&&typeorm migration:run",
+      "build_test": "tsc -p . && npm run migration_test",
       "build": "tsc -p . && npm run migration_prod",
-      "start": "node ."
+      "start": "set NODE_ENV=prod&&node .",
+      "start_test": "set NODE_ENV=test&&node ."
    },
    "repository": {
       "type": "git",
