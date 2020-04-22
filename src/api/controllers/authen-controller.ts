@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
 class AuthenController {
     public static login = async (req: Request, res: Response) => {

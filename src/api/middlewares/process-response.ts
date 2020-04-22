@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
 export const processResponse = async (req: Request, res: Response, next: NextFunction) => {
-    let json_ = res.json;
+    const json = res.json;
 
     res.json = (object): any => {
         console.log(object);
@@ -11,34 +11,34 @@ export const processResponse = async (req: Request, res: Response, next: NextFun
         let statusMessage: string;
         switch (statusCode) {
             case 200:
-                statusMessage = 'OK';
+                statusMessage = "OK";
                 break;
             case 201:
-                statusMessage = 'Created';
+                statusMessage = "Created";
                 break;
             case 202:
-                statusMessage = 'Accepted';
+                statusMessage = "Accepted";
                 break;
             case 400:
-                statusMessage = 'Bad Request';
+                statusMessage = "Bad Request";
                 break;
             case 401:
-                statusMessage = 'Unauthorized';
+                statusMessage = "Unauthorized";
                 break;
             case 403:
-                statusMessage = 'Forbidden';
+                statusMessage = "Forbidden";
                 break;
             case 404:
-                statusMessage = 'Not Found';
+                statusMessage = "Not Found";
                 break;
             case 409:
-                statusMessage = 'Conflict';
+                statusMessage = "Conflict";
                 break;
             case 500:
-                statusMessage = 'Internal Server Error';
+                statusMessage = "Internal Server Error";
                 break;
             default:
-                statusMessage = 'Unknown';
+                statusMessage = "Unknown";
         }
 
         object = {
@@ -46,8 +46,8 @@ export const processResponse = async (req: Request, res: Response, next: NextFun
             statusCode,
             statusMessage,
             message: object
-        }
-        json_.call(res, object);
+        };
+        json.call(res, object);
     };
 
     // Call the next middleware or controller

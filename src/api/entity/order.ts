@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { OrderDetail } from './order-detail';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { OrderDetail } from "./order-detail";
 
 @Entity()
 export class Order {
@@ -8,7 +8,7 @@ export class Order {
     public id: string;
 
     @Column({
-        type: 'date'
+        type: "date"
     })
     public dateCreated: Date;
 

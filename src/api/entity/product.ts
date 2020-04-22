@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, OneToMany } from 'typeorm';
-import { OrderDetail } from './order-detail';
-import { Unit } from './unit';
-import { Category } from './category';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column, OneToMany } from "typeorm";
+import { OrderDetail } from "./order-detail";
+import { Unit } from "./unit";
+import { Category } from "./category";
 
 @Entity()
 export class Product {
@@ -10,34 +10,34 @@ export class Product {
     public id: string;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 50
     })
     public barcode: string;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 250
     })
     public name: string;
 
     @Column({
-        type: 'int'
+        type: "int"
     })
     public importPrice: number;
 
     @Column({
-        type: 'int'
+        type: "int"
     })
     public exportPrice: number;
 
     @Column({
-        type: 'date'
+        type: "date"
     })
     public lastUpdate: Date;
 
     @Column({
-        type: 'int'
+        type: "int"
     })
     public status: number;
 
