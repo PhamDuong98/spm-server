@@ -4,6 +4,7 @@ import * as cors from 'cors';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import api from './api';
+import { processResponse } from './api/middlewares/process-response';
 
 createConnection().then(async (connection) => {
 
@@ -20,7 +21,7 @@ createConnection().then(async (connection) => {
         });
     });
 
-    app.use('/api/v1', api);
+    app.use('/api/v1', [processResponse], api);
 
     app.listen(3000);
 
