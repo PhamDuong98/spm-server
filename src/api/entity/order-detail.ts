@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
-import { Order } from './order';
-import { Product } from './product';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
+import { Order } from "./order";
+import { Product } from "./product";
 
 @Entity()
 export class OrderDetail {
@@ -9,7 +9,7 @@ export class OrderDetail {
     public id: string;
 
     @Column({
-        type: 'int'
+        type: "int"
     })
     public salePrice: number;
 

@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Product } from './product';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Product } from "./product";
 
 @Entity()
 export class Unit {
@@ -8,7 +8,7 @@ export class Unit {
     public id: number;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 100
     })
     public name: string;

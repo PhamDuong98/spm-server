@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -7,20 +7,20 @@ export class User {
     public id: number;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 50
     })
     public username: string;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 250,
         select: false
     })
     public encryptedPassword: string;
 
     @Column({
-        type: 'varchar',
+        type: "varchar",
         length: 250
     })
     public fullName: string;
