@@ -4,8 +4,6 @@ export const processResponse = async (req: Request, res: Response, next: NextFun
     const json = res.json;
 
     res.json = (object): any => {
-        console.log(object);
-
         const timestamp = new Date().toISOString();
         const statusCode = res.statusCode;
         let statusMessage: string;
@@ -45,7 +43,7 @@ export const processResponse = async (req: Request, res: Response, next: NextFun
             timestamp,
             statusCode,
             statusMessage,
-            message: object
+            data: object
         };
         json.call(res, object);
     };
