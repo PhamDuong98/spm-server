@@ -4,6 +4,6 @@ import ProductController from "../controllers/product-controller";
 
 const productRouter = Router();
 
-productRouter.get("/list-product", [checkJwt], ProductController.getAll);
+productRouter.get("/list-product", [checkJwt], ProductController.getListProduct);
 
 export default productRouter;

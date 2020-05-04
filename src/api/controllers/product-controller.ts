@@ -7,12 +7,18 @@ import config from "../config/config";
 import { Product } from "../entity/product";
 
 class ProductController {
-    public static getAll = async (req: Request, res: Response) => {
+    public static getListProduct = async (req: Request, res: Response) => {
         try {
+            const pageIndex = req.query.pageIndex;
+            const pageSize = req.query.pageSize;
+
             const productRepository = getRepository(Product);
             const allProducts = await productRepository.createQueryBuilder("product")
                 .leftJoinAndSelect("product.unit", "unit")
                 .leftJoinAndSelect("product.category", "category")
+                .orderBy("product.id", "ASC")
+                .skip(+pageIndex * +pageSize)
+                .take(+pageSize)
                 .getMany();
             for (const prod of allProducts) {
                 prod["unitName"] = prod.unit.name;
@@ -21,10 +27,11 @@ class ProductController {
                 delete prod.category;
             }
 
-            const user: any = res.locals.user;
+            const count = await productRepository.createQueryBuilder("product").getCount();
 
-            res.send({ allProducts, user });
+            res.send({ allProducts, count });
         } catch (error) {
+            console.log(error);
             res.status(500).send({});
         }
     }
