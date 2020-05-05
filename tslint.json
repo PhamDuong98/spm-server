@@ -1,0 +1,63 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-string-literal": false,
+        "quotemark": [
+            true,
+            "double"
+        ],
+        "eofline": true,
+        "semicolon": {
+            "options": [
+                "always"
+            ]
+        },
+        "indent": {
+            "options": [
+                "spaces"
+            ]
+        },
+        "max-classes-per-file": false,
+        "max-line-length": [
+            true,
+            140
+        ],
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "static-field",
+                    "instance-field",
+                    "static-method",
+                    "instance-method"
+                ]
+            }
+        ],
+        "no-console": [
+            true,
+            "debug",
+            "info",
+            "time",
+            "timeEnd",
+            "trace"
+        ],
+        "trailing-comma": [
+            true,
+            {
+                "singleline": "never",
+                "multiline": {
+                    "objects": "never",
+                    "arrays": "always",
+                    "functions": "never",
+                    "typeLiterals": "ignore"
+                }
+            }
+        ],
+        "object-literal-sort-keys": false
+    },
+    "rulesDirectory": []
+}

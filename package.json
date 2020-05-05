@@ -1,0 +1,47 @@
+{
+   "name": "spm-server",
+   "version": "0.0.1",
+   "description": "Sell Product Manager",
+   "main": "dist/index.js",
+   "scripts": {
+      "dev": "set NODE_ENV=dev&&nodemon src/index.ts",
+      "create_migration_dev": "set NODE_ENV=dev&&ts-node ./node_modules/typeorm/cli.js migration:generate -n seed",
+      "migration_dev": "set NODE_ENV=dev&&ts-node ./node_modules/typeorm/cli.js migration:run",
+      "migration_test": "set NODE_ENV=test&&typeorm migration:run",
+      "migration_prod": "set NODE_ENV=prod&&typeorm migration:run",
+      "build_test": "tsc -p . && npm run migration_test",
+      "build": "tsc -p . && npm run migration_prod",
+      "start": "set NODE_ENV=prod&&node .",
+      "start_test": "set NODE_ENV=test&&node ."
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/PhamDuong98/spm-server.git"
+   },
+   "author": "PhamDuong98",
+   "license": "MIT",
+   "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.18.1",
+      "cors": "^2.8.5",
+      "express": "^4.15.4",
+      "jsonwebtoken": "^8.5.1",
+      "multer": "^1.4.2",
+      "pg": "^7.3.0",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.24"
+   },
+   "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
+      "@types/body-parser": "^1.19.0",
+      "@types/cors": "^2.8.6",
+      "@types/express": "^4.17.6",
+      "@types/jsonwebtoken": "^8.3.9",
+      "@types/multer": "^1.4.3",
+      "@types/node": "^8.0.29",
+      "nodemon": "^2.0.3",
+      "ts-node": "3.3.0",
+      "tslint": "^6.1.1",
+      "typescript": "3.3.3333"
+   }
+}
