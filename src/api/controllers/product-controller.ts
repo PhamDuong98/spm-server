@@ -11,8 +11,11 @@ class ProductController {
         try {
             const pageIndex = req.query.pageIndex;
             const pageSize = req.query.pageSize;
-
+            const barcode = req.query.barcode;
             const productRepository = getRepository(Product);
+            const searchProductByBarcode = await productRepository.createQueryBuilder("product")
+                .where("product.barcode = :barcode", { barcode: barcode+"" })
+                .getOne();
             const allProducts = await productRepository.createQueryBuilder("product")
                 .leftJoinAndSelect("product.unit", "unit")
                 .leftJoinAndSelect("product.category", "category")
@@ -26,10 +29,17 @@ class ProductController {
                 prod["categoryName"] = prod.category.name;
                 delete prod.category;
             }
+            // const insertProduct = await productRepository.createQueryBuilder()
+            //     .insert()
+            //     .into(Product)
+            //     .values([
+            //         { }
+            //     ])
+            // .execute();
 
             const count = await productRepository.createQueryBuilder("product").getCount();
 
-            res.send({ allProducts, count });
+            res.send({ allProducts, count, searchProductByBarcode });
         } catch (error) {
             console.log(error);
             res.status(500).send({});
